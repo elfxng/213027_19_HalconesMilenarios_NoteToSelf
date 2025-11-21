@@ -1,59 +1,19 @@
 using UnityEngine;
 
-public class NPCChaseNote : MonoBehaviour
+public class NPCNoteCollector : MonoBehaviour
 {
-    public float speed = 3f;
-    public float jumpForce = 6f;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
+    private float lastPointTime = 0f;
+    public float cooldown = 0.3f; // evitar sumar mil puntos por segundo
 
-    private Rigidbody2D rb;
-
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        GameObject note = FindClosestNote();
-        if (note == null) return;
-
-        Vector2 pos = transform.position;
-        Vector2 npos = note.transform.position;
-
-        float direction = Mathf.Sign(npos.x - pos.x);
-        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
-
-        // salto si la nota est� por encima
-        if (npos.y > pos.y + 0.3f && IsGrounded())
+        if (collision.collider.CompareTag("Note"))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
-    }
-
-    GameObject FindClosestNote()
-    {
-        GameObject[] notes = GameObject.FindGameObjectsWithTag("Note");
-        GameObject closest = null;
-        float minDist = Mathf.Infinity;
-        Vector3 myPos = transform.position;
-
-        foreach (var n in notes)
-        {
-            float d = (n.transform.position - myPos).sqrMagnitude;
-            if (d < minDist)
+            if (Time.time - lastPointTime > cooldown)
             {
-                minDist = d;
-                closest = n;
+                ScoreManager.Instance.AddPoint();
+                lastPointTime = Time.time;
             }
         }
-
-        return closest;
-    }
-
-    bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 }

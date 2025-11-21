@@ -112,111 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Luigi_Walk_0
+      name: Walk_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 7
+        y: 0
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa2166b2087ec6448ddfff0a455016c
+      internalID: -744265415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_1
+      rect:
+        serializedVersion: 2
+        x: 41
         y: 0
         width: 16
-        height: 32
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b47d859e0732a0330800000000000000
-      internalID: 3677791013559654219
+      spriteID: e89cd65e1c97894438a528a12c330e86
+      internalID: 894040106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Luigi_Walk_1
+      name: Walk_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 18
-        height: 32
+        x: 76
+        y: 1
+        width: 16
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7500b81a6f98ab900800000000000000
-      internalID: 701024384374734935
+      spriteID: 6ebbc7ff8ae9cb8488132acc20bbae78
+      internalID: 579883276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Luigi_Walk_2
+      name: Walk_3
       rect:
         serializedVersion: 2
-        x: 75
-        y: 0
-        width: 18
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 94867d258977ce510800000000000000
-      internalID: 1579769065408784457
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Luigi_Walk_3
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 0
-        width: 18
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab988da29d6864340800000000000000
-      internalID: 4847710316195776954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Luigi_Walk_4
-      rect:
-        serializedVersion: 2
-        x: 146
+        x: 111
         y: 0
         width: 16
-        height: 32
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b111b38937bc55050800000000000000
-      internalID: 5788756593390326043
+      spriteID: 2f23fa7991878b446a862b8a41985cc6
+      internalID: 1935018569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_4
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33572cc229ebd034c9d1c4e073063849
+      internalID: 44665742
       vertices: []
       indices: 
       edges: []
@@ -225,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bde0e3d0743aa404da8755889b7ad6ae
     internalID: 0
     vertices: []
     indices: 
@@ -233,13 +233,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Luigi_Walk_0: 3677791013559654219
-      Luigi_Walk_1: 701024384374734935
-      Luigi_Walk_2: 1579769065408784457
-      Luigi_Walk_3: 4847710316195776954
-      Luigi_Walk_4: 5788756593390326043
+      Walk_0: -744265415
+      Walk_1: 894040106
+      Walk_2: 579883276
+      Walk_3: 1935018569
+      Walk_4: 44665742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

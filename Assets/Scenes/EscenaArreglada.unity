@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57092870}
   - component: {fileID: 57092871}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: PlayerHead
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77168624}
   - component: {fileID: 77168625}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: PlayerHead
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291991575}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ Transform:
   m_GameObject: {fileID: 291991574}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.158, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1626, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -628,7 +628,8 @@ GameObject:
   - component: {fileID: 294764989}
   - component: {fileID: 294764992}
   - component: {fileID: 294764991}
-  m_Layer: 0
+  - component: {fileID: 294764993}
+  m_Layer: 6
   m_Name: Luigi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +646,7 @@ Animator:
   m_GameObject: {fileID: 294764985}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0820e68d1bdb11f419a24f26b911f3db, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8c54c81b44389cd4db6dd686e3ea4bd9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -704,12 +705,12 @@ SpriteRenderer:
   m_SortingLayerID: -1995626405
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3677791013559654219, guid: d2c9506134c2a0a4986e377fe3aee47d, type: 3}
+  m_Sprite: {fileID: -744265415, guid: d2c9506134c2a0a4986e377fe3aee47d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.32}
+  m_Size: {x: 0.14, y: 0.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -728,8 +729,8 @@ Transform:
   m_LocalScale: {x: 9.374012, y: 9.374012, z: 9.374012}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 374552267}
   - {fileID: 291991575}
+  - {fileID: 374552267}
   m_Father: {fileID: 981990879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &294764989
@@ -744,12 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0887b2adb2c58046920bd30db4ccff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCChaseNote
-  speed: 3
-  jumpForce: 6
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  cooldown: 0.3
 --- !u!114 &294764990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,7 +758,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f61c4ab577350647901939812a571b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCNoteCollector
-  cooldown: 0.3
+  speed: 3
+  jumpForce: 6
+  jumpCooldown: 0.6
+  maxHorizontalJumpDist: 1.5
+  groundCheck: {fileID: 291991575}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 72
+  groundCheckRadius: 0.2
 --- !u!61 &294764991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -770,7 +774,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294764985}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -801,8 +805,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.32}
-    newSize: {x: 0.16, y: 0.32}
+    oldSize: {x: 0.14, y: 0.31}
+    newSize: {x: 0.14, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -835,7 +839,44 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!70 &294764993
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294764985}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.000000059604645}
+  m_Size: {x: 0.13999999, y: 0.30999997}
+  m_Direction: 0
 --- !u!1 &322297667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374552267}
   - component: {fileID: 374552268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: PlayerHead
   m_Icon: {fileID: 0}
@@ -1577,7 +1618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 622315353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1764,7 +1805,7 @@ GameObject:
   - component: {fileID: 914112306}
   - component: {fileID: 914112305}
   - component: {fileID: 914112304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1886,7 +1927,7 @@ MonoBehaviour:
   groundCheckRadius: 0.12
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   animIdleWalkThreshold: 0.5
   animBlendSpeed: 10
 --- !u!114 &914112305
@@ -3712,7 +3753,7 @@ GameObject:
   - component: {fileID: 2021855561}
   - component: {fileID: 2021855564}
   - component: {fileID: 2021855563}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Peach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3812,8 +3853,8 @@ Transform:
   m_LocalScale: {x: 8.553797, y: 8.553797, z: 8.553797}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 57092870}
   - {fileID: 622315353}
+  - {fileID: 57092870}
   m_Father: {fileID: 981990879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2021855561
@@ -3828,12 +3869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0887b2adb2c58046920bd30db4ccff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCChaseNote
-  speed: 3
-  jumpForce: 6
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  cooldown: 0.3
 --- !u!114 &2021855562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3846,7 +3882,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f61c4ab577350647901939812a571b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCNoteCollector
-  cooldown: 0.3
+  speed: 3
+  jumpForce: 6
+  jumpCooldown: 0.6
+  maxHorizontalJumpDist: 1.5
+  groundCheck: {fileID: 622315353}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 72
+  groundCheckRadius: 0.2
 --- !u!61 &2021855563
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3908,7 +3952,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3919,7 +3963,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &2039063643
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,7 +4079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2093728964}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

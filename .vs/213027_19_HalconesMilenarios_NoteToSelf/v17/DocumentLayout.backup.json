@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\scripts\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\assets\\scripts\\notehit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\notehit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\assets\\scripts\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\npcchasenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npcchasenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NoteHit.cs",
-              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteHit.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\NoteHit.cs",
-              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteHit.cs",
-              "RelativeToolTip": "Assets\\Scripts\\NoteHit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T01:29:54.173Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NoteController.cs",
-              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\NoteController.cs",
-              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\NoteController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T01:29:37.177Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Note.cs",
-              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Note.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Note.cs",
-              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Note.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Note.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "NPCChaseNote.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NPCChaseNote.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NPCChaseNote.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NPCChaseNote.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NPCChaseNote.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T01:28:52.274Z",
+              "WhenOpened": "2025-11-21T01:49:36.245Z",
               "EditorCaption": ""
             }
           ]
