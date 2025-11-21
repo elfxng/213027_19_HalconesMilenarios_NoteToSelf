@@ -629,6 +629,8 @@ GameObject:
   - component: {fileID: 294764992}
   - component: {fileID: 294764991}
   - component: {fileID: 294764993}
+  - component: {fileID: 294764995}
+  - component: {fileID: 294764994}
   m_Layer: 6
   m_Name: Luigi
   m_TagString: Untagged
@@ -877,6 +879,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.000000059604645}
   m_Size: {x: 0.13999999, y: 0.30999997}
   m_Direction: 0
+--- !u!114 &294764994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294764985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd956831a4f5efb4ca30d3b2ca55ef7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StompDetector
+  bounceForce: 8
+--- !u!114 &294764995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294764985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c75bb013549e9c4285d7410dede96be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stompable
+  stunDuration: 3
+  shrinkScale: 0.5
+  blinkSpeed: 0.15
+  movementScripts:
+  - {fileID: 294764990}
+  - {fileID: 294764989}
 --- !u!1 &322297667
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +1027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60
+  m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1140,7 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f731276382aa2984d8cbdde897b09adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  timeLeft: 60
+  timeLeft: 30
   timerText: {fileID: 332621614}
 --- !u!1 &374552266
 GameObject:
@@ -1805,6 +1838,8 @@ GameObject:
   - component: {fileID: 914112306}
   - component: {fileID: 914112305}
   - component: {fileID: 914112304}
+  - component: {fileID: 914112309}
+  - component: {fileID: 914112308}
   m_Layer: 6
   m_Name: Mario
   m_TagString: Untagged
@@ -2024,6 +2059,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &914112308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914112300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd956831a4f5efb4ca30d3b2ca55ef7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StompDetector
+  bounceForce: 8
+--- !u!114 &914112309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914112300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c75bb013549e9c4285d7410dede96be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stompable
+  stunDuration: 3
+  shrinkScale: 0.5
+  blinkSpeed: 0.15
+  movementScripts:
+  - {fileID: 914112304}
 --- !u!1 &935083318
 GameObject:
   m_ObjectHideFlags: 0
