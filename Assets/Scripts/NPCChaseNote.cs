@@ -2,23 +2,24 @@ using UnityEngine;
 
 public class NPCChaseNote : MonoBehaviour
 {
-    [Header("Movimiento")]
+    [Header("Movement")]
     public float speed = 3f;
 
-    [Header("Salto")]
+    [Header("Jump Settings")]
     public float jumpForce = 12f;
-    public float jumpCooldown = 0.6f;          // tiempo mínimo entre saltos
-    public float maxHorizontalJumpDist = 1.5f; // solo salta si la nota está cerca en X
+    public float jumpCooldown = 0.6f;
+    public float maxHorizontalJumpDist = 1.5f;
 
-    [Header("Detección de suelo")]
+    [Header("Ground Check")]
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float groundCheckRadius = 0.2f;
 
-    private Rigidbody2D rb;
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
-    private float lastJumpTime = -999f;
+    Rigidbody2D rb;
+    Animator animator;
+    SpriteRenderer spriteRenderer;
+
+    float lastJumpTime = -999f;
 
     void Start()
     {
@@ -29,11 +30,23 @@ public class NPCChaseNote : MonoBehaviour
 
     void Update()
     {
-        GameObject note = FindClosestNote();
-
         bool grounded = IsGrounded();
 
-        // Si no hay notas, quieto (solo Idle)
+        // STOP MOVEMENT ONLY WHEN TIME IS OVER
+        if (Timer.IsTimeUp)
+        {
+            // no horizontal movement, let gravity work
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+
+            float endSpeed = Mathf.Abs(rb.linearVelocity.x);
+            UpdateAnimations(endSpeed, grounded);
+            return;
+        }
+
+        // ---------- NORMAL AI WHILE THERE IS TIME ----------
+        GameObject note = FindClosestNote();
+
+        // No notes = idle
         if (note == null)
         {
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
@@ -44,25 +57,23 @@ public class NPCChaseNote : MonoBehaviour
         Vector2 pos = transform.position;
         Vector2 npos = note.transform.position;
 
-        // 1) Moverse en X hacia la nota
+        // Horizontal movement
         float direction = Mathf.Sign(npos.x - pos.x);
         rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
 
-        // Voltear sprite según dirección
+        // Flip sprite
         if (direction != 0 && spriteRenderer != null)
-        {
-            spriteRenderer.flipX = direction < 0;
-        }
+            spriteRenderer.flipX = (direction < 0);
 
-        // 2) Decidir si debe saltar
+        // Jump logic
         float horizontalDist = Mathf.Abs(npos.x - pos.x);
         float verticalDist = npos.y - pos.y;
 
         bool canJumpByTime = Time.time - lastJumpTime > jumpCooldown;
-        bool noteIsAbove = verticalDist > 0.4f;            // nota está más arriba
-        bool noteCloseX = horizontalDist < maxHorizontalJumpDist; // nota no muy lejos en X
+        bool noteAbove = verticalDist > 0.4f;
+        bool closeEnoughX = horizontalDist < maxHorizontalJumpDist;
 
-        bool shouldJump = grounded && canJumpByTime && noteIsAbove && noteCloseX;
+        bool shouldJump = grounded && canJumpByTime && noteAbove && closeEnoughX;
 
         if (shouldJump)
         {
@@ -70,36 +81,33 @@ public class NPCChaseNote : MonoBehaviour
             lastJumpTime = Time.time;
         }
 
-        // 3) Actualizar animaciones
-        float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
-        UpdateAnimations(horizontalSpeed, grounded);
+        float horizSpeed = Mathf.Abs(rb.linearVelocity.x);
+        UpdateAnimations(horizSpeed, grounded);
     }
 
     void UpdateAnimations(float horizontalSpeed, bool grounded)
     {
         if (animator == null) return;
 
-        // Idle <-> Walk
         animator.SetFloat("Speed", horizontalSpeed);
-
-        // Jump
-        bool isJumping = !grounded;
-        animator.SetBool("IsJumping", isJumping);
+        animator.SetBool("IsJumping", !grounded);
     }
 
     GameObject FindClosestNote()
     {
         GameObject[] notes = GameObject.FindGameObjectsWithTag("Note");
+        if (notes.Length == 0) return null;
+
         GameObject closest = null;
         float minDist = Mathf.Infinity;
         Vector3 myPos = transform.position;
 
         foreach (var n in notes)
         {
-            float d = (n.transform.position - myPos).sqrMagnitude;
-            if (d < minDist)
+            float dist = (n.transform.position - myPos).sqrMagnitude;
+            if (dist < minDist)
             {
-                minDist = d;
+                minDist = dist;
                 closest = n;
             }
         }

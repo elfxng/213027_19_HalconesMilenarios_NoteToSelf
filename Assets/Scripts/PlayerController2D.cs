@@ -35,12 +35,11 @@ public class PlayerController2D : MonoBehaviour
     SpriteRenderer _sprite;
     Animator _anim;
 
-    float _moveInput;                 // -1 .. 1 from input (A/D, arrows)
+    float _moveInput;
     bool _jumpQueued;
     bool _isGrounded;
     float _animSpeedSmoothed;
 
-    // Animator parameter hashes (faster than string lookups)
     static readonly int HashSpeed = Animator.StringToHash("Speed");
     static readonly int HashGrounded = Animator.StringToHash("Grounded");
     static readonly int HashYVel = Animator.StringToHash("YVel");
@@ -53,16 +52,27 @@ public class PlayerController2D : MonoBehaviour
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _anim = GetComponent<Animator>();
 
-        _rb.freezeRotation = true;        // keep 2D characters upright
+        _rb.freezeRotation = true;
     }
 
     void Update()
     {
-        // Face movement direction
+        // 🟡 DETENER a Mario cuando el tiempo se acabe
+        if (Timer.IsTimeUp)
+        {
+            _moveInput = 0f;
+            _jumpQueued = false;
+
+            // mantener animación Idle
+            _anim.SetFloat(HashSpeed, 0f);
+            _anim.SetBool(HashGrounded, _isGrounded);
+            return;
+        }
+
+        // ───────── lógica original intacta ─────────
         if (_sprite && Mathf.Abs(_moveInput) > 0.01f)
             _sprite.flipX = _moveInput < 0f;
 
-        // Perform jump when requested and grounded
         if (_jumpQueued && _isGrounded)
         {
             _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0f);
@@ -71,7 +81,6 @@ public class PlayerController2D : MonoBehaviour
             _anim.SetTrigger(HashJumpTrig);
         }
 
-        // Drive animator parameters
         float targetAnimSpeed = Mathf.Abs(_moveInput) >= animIdleWalkThreshold ? 1f : 0f;
         _animSpeedSmoothed = Mathf.MoveTowards(_animSpeedSmoothed, targetAnimSpeed, animBlendSpeed * Time.deltaTime);
 
@@ -82,27 +91,33 @@ public class PlayerController2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Horizontal movement
+        // 🟡 SI SE ACABÓ EL TIEMPO → bloquear movimiento horizontal
+        if (Timer.IsTimeUp)
+        {
+            _rb.linearVelocity = new Vector2(0f, _rb.linearVelocity.y);
+            return;
+        }
+
+        // ───────── lógica original intacta ─────────
         _rb.linearVelocity = new Vector2(_moveInput * moveSpeed, _rb.linearVelocity.y);
 
-        // Stop horizontal drift when there is no input
         if (Mathf.Abs(_moveInput) < 0.01f)
             _rb.linearVelocity = new Vector2(0f, _rb.linearVelocity.y);
 
-        // Ground detection
         if (groundCheck)
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) != null;
     }
 
     // ───────────────────────────── Input System ──────────────────────────
-    // Works with Player Input (Behavior = Send Messages).
     public void OnMove(InputValue value)
     {
+        if (Timer.IsTimeUp) return; // bloquear input
         _moveInput = Mathf.Clamp(value.Get<float>(), -1f, 1f);
     }
 
     public void OnJump(InputValue value)
     {
+        if (Timer.IsTimeUp) return; // bloquear salto
         if (value.isPressed) _jumpQueued = true;
     }
 
