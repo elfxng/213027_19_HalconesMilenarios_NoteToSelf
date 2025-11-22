@@ -2,18 +2,17 @@
 
 public class NPCNoteCollector : MonoBehaviour
 {
-    private float lastPointTime = 0f;
-    public float cooldown = 0.3f; // evitar sumar mil puntos por segundo
+    [Tooltip("Assign the ScoreManager for this NPC (drag the GameManagerNPC object here)")]
+    public ScoreManager myScore;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.collider.CompareTag("Note"))
+        if (col.CompareTag("MusicalNote"))
         {
-            if (Time.time - lastPointTime > cooldown)
-            {
-                ScoreManager.Instance.AddPoint();
-                lastPointTime = Time.time;
-            }
+            if (myScore != null)
+                myScore.AddPoint();
+            else
+                Debug.LogWarning($"NPCNoteCollector: myScore not assigned on {gameObject.name}");
         }
     }
 }
