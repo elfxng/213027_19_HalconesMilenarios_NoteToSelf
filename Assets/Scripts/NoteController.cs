@@ -9,11 +9,12 @@ public class NoteMover : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 velocity;
 
+//position adjust
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;           // No gravedad
-        rb.freezeRotation = true;      // No girar
+        rb.gravityScale = 0;           
+        rb.freezeRotation = true;      
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
         SetRandomVelocity();
@@ -24,16 +25,16 @@ public class NoteMover : MonoBehaviour
         rb.linearVelocity = velocity;
     }
 
-    // Rebotar cuando choca contra un muro
+    // bounce when it hits a wall
     void OnCollisionEnter2D(Collision2D col)
     {
         ContactPoint2D contact = col.contacts[0];
         Vector2 normal = contact.normal;
 
-        // reflejar velocidad
+       
         velocity = Vector2.Reflect(velocity, normal);
 
-        // mantener velocidad constante
+       
         float speed = Random.Range(minSpeed, maxSpeed);
         velocity = velocity.normalized * speed;
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NoteHit : MonoBehaviour
 {
-    public AudioClip hitSound; // sonido del golpe
+    public AudioClip hitSound; 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
