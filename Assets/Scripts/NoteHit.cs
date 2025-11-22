@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class NoteHit : MonoBehaviour
 {
+    public AudioClip hitSound; // sonido del golpe
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Golpeó una cabeza
         if (collision.CompareTag("PlayerHead"))
         {
-            // Buscar el ScoreManager del personaje dueño de esa cabeza
+            
             ScoreManager sm = collision.GetComponentInParent<ScoreManager>();
-
             if (sm != null)
                 sm.AddPoint();
+
+            
+            AudioSource audio = collision.GetComponentInParent<AudioSource>();
+            if (audio != null && hitSound != null)
+                audio.PlayOneShot(hitSound);
         }
     }
 }
