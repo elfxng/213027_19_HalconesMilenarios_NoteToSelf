@@ -2,8 +2,13 @@
 
 public class NPCNoteCollector : MonoBehaviour
 {
-    [Tooltip("Assign the ScoreManager for this NPC (drag the GameManagerNPC object here)")]
     public ScoreManager myScore;
+
+    private void Awake()
+    {
+        if (myScore == null)
+            myScore = GetComponentInParent<ScoreManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -12,7 +17,7 @@ public class NPCNoteCollector : MonoBehaviour
             if (myScore != null)
                 myScore.AddPoint();
             else
-                Debug.LogWarning($"NPCNoteCollector: myScore not assigned on {gameObject.name}");
+                Debug.LogWarning($"NPCNoteCollector: myScore not found for {gameObject.name}");
         }
     }
 }
