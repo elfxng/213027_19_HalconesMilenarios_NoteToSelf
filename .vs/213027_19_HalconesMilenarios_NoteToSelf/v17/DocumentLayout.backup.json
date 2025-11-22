@@ -7,12 +7,8 @@
       "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npcchasenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\assets\\scripts\\playercontroller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\assets\\scripts\\gamestart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamestart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\notecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NoteController.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NoteController.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NoteController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAiwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-22T04:52:06.126Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,34 +41,10 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\NPCChaseNote.cs",
               "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NPCChaseNote.cs",
               "RelativeToolTip": "Assets\\Scripts\\NPCChaseNote.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAmwIMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAmwIoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-22T04:30:36.177Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerController2D.cs",
-              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\PlayerController2D.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController2D.cs",
-              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\PlayerController2D.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlayerController2D.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAIwHkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-22T04:29:37.472Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GameStart.cs",
-              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\GameStart.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GameStart.cs",
-              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\GameStart.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GameStart.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAmwDUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-22T04:23:43.666Z"
             }
           ]
         }

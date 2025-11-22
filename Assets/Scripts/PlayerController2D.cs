@@ -102,8 +102,17 @@ public class PlayerController2D : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        // block jump if time is up or start is locked
         if (Timer.IsTimeUp || !GameStart.CanPlayersMove) return;
-        if (value.isPressed) _jumpQueued = true;
+
+        // only allow jump if:
+        // 1) button is pressed
+        // 2) Mario is grounded
+        // 3) he is not going up already (avoid double jump feeling)
+        if (value.isPressed && _isGrounded && _rb.linearVelocity.y <= 0.01f)
+        {
+            _jumpQueued = true;
+        }
     }
 
     void OnDisable()

@@ -20,8 +20,6 @@ public class NPCChaseNote : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private float lastJumpTime = -999f;
-    private bool hasJumped = false;   // avoid double jump
-    private bool wasGrounded = false; // track landing
 
     void Start()
     {
@@ -40,31 +38,23 @@ public class NPCChaseNote : MonoBehaviour
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             float endSpeed = Mathf.Abs(rb.linearVelocity.x);
             UpdateAnimations(endSpeed, grounded);
-            wasGrounded = grounded;
             return;
-        }
-
-        // 2) Detect landing: only when we were in the air and now we are grounded
-        if (grounded && !wasGrounded)
-        {
-            hasJumped = false; // allow a new jump after landing
         }
 
         GameObject note = FindClosestNote();
 
-        // 3) No notes -> idle
+        // 2) No notes -> idle
         if (note == null)
         {
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             UpdateAnimations(0f, grounded);
-            wasGrounded = grounded;
             return;
         }
 
         Vector2 pos = transform.position;
         Vector2 npos = note.transform.position;
 
-        // 4) Move horizontally toward the note
+        // 3) Move horizontally toward the note
         float direction = Mathf.Sign(npos.x - pos.x);
         rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
 
@@ -74,30 +64,26 @@ public class NPCChaseNote : MonoBehaviour
             spriteRenderer.flipX = (direction < 0);
         }
 
-        // 5) Decide if the NPC should jump
+        // 4) Decide if the NPC should jump
         float horizontalDist = Mathf.Abs(npos.x - pos.x);
         float verticalDist = npos.y - pos.y;
 
+        bool groundedNow = grounded;
         bool canJumpByTime = Time.time - lastJumpTime > jumpCooldown;
         bool noteAbove = verticalDist > 0.4f;
         bool closeEnoughX = horizontalDist < maxHorizontalJumpDist;
 
-        // 👉 Only one jump until landing: !hasJumped && grounded
-        bool shouldJump = !hasJumped && grounded && canJumpByTime && noteAbove && closeEnoughX;
+        bool shouldJump = groundedNow && canJumpByTime && noteAbove && closeEnoughX;
 
         if (shouldJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             lastJumpTime = Time.time;
-            hasJumped = true;
         }
 
-        // 6) Update animations
+        // 5) Update animations
         float horizSpeed = Mathf.Abs(rb.linearVelocity.x);
-        UpdateAnimations(horizSpeed, grounded);
-
-        // Save grounded state for next frame
-        wasGrounded = grounded;
+        UpdateAnimations(horizSpeed, groundedNow);
     }
 
     void UpdateAnimations(float horizontalSpeed, bool grounded)
@@ -132,7 +118,7 @@ public class NPCChaseNote : MonoBehaviour
 
     bool IsGrounded()
     {
-        // IMPORTANT: groundLayer should contain ONLY the floor/platforms
+        // groundLayer MUST be only the floor/platforms
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 }
