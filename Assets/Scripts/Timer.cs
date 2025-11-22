@@ -1,12 +1,31 @@
 using UnityEngine;
-using TMPro; // elimina si usas Text normal
-using UnityEngine.UI; // deja si usas Text
+using TMPro;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float timeLeft = 60f;      // duración del cronómetro (cambiado a 60)
-    public TMP_Text timerText;        // cambia a Text si no usas TMP
+    public static Timer Instance { get; private set; }   // para acceder desde otros scripts
+    public static bool IsTimeUp => Instance != null && Instance.timeLeft <= 0f;
+
+    [Header("Tiempo")]
+    public float timeLeft = 30f;      // duración del cronómetro
+
+    [Header("Texto UI")]
+    public TMP_Text timerText;        // si usas TextMeshPro
+
     private bool running = true;
+
+    void Awake()
+    {
+        // patrón Singleton muy simple
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     void Update()
     {
@@ -14,12 +33,13 @@ public class Timer : MonoBehaviour
 
         timeLeft -= Time.deltaTime;
 
-        if (timeLeft < 0)
+        if (timeLeft <= 0f)
         {
-            timeLeft = 0;
+            timeLeft = 0f;
             running = false;
         }
 
-        timerText.text = Mathf.Ceil(timeLeft).ToString();
+        if (timerText != null)
+            timerText.text = Mathf.Ceil(timeLeft).ToString();
     }
 }

@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\playercontroller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\assets\\scripts\\stompable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\stompable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\assets\\scripts\\stompdetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\stompdetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\assets\\scripts\\npcchasenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npcchasenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerController2D.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\PlayerController2D.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController2D.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\PlayerController2D.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerController2D.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAowG4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T05:13:01.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Timer.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Timer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Timer.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Timer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Timer.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T05:11:01.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StompDetector.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\StompDetector.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\StompDetector.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\StompDetector.cs",
+              "RelativeToolTip": "Assets\\Scripts\\StompDetector.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T04:51:48.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Stompable.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Stompable.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Stompable.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Stompable.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Stompable.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T04:50:49.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NPCChaseNote.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NPCChaseNote.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NPCChaseNote.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NPCChaseNote.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NPCChaseNote.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T01:49:36.245Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
