@@ -5,32 +5,19 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(Animator))]
 public class PlayerController2D : MonoBehaviour
 {
-    // ───────────────────────────── Inspector ─────────────────────────────
     [Header("Movement")]
-    [Tooltip("Horizontal speed in units per second.")]
     public float moveSpeed = 6f;
-
-    [Tooltip("Impulse applied when jumping.")]
     public float jumpForce = 12f;
 
     [Header("Ground Check")]
-    [Tooltip("Point under the feet used to detect the ground.")]
     public Transform groundCheck;
-
-    [Tooltip("Radius of the overlap circle used to detect the ground.")]
     [Min(0.01f)] public float groundCheckRadius = 0.18f;
-
-    [Tooltip("Physics layer considered as ground.")]
     public LayerMask groundLayer = 0;
 
     [Header("Animation Tuning")]
-    [Tooltip("Speed threshold to switch Idle <-> Walk (0..1).")]
     [Range(0f, 1f)] public float animIdleWalkThreshold = 0.5f;
-
-    [Tooltip("How fast the animated speed blends toward the target value.")]
     [Min(0f)] public float animBlendSpeed = 10f;
 
-    // ───────────────────────── Runtime (private) ─────────────────────────
     Rigidbody2D _rb;
     SpriteRenderer _sprite;
     Animator _anim;
@@ -45,34 +32,33 @@ public class PlayerController2D : MonoBehaviour
     static readonly int HashYVel = Animator.StringToHash("YVel");
     static readonly int HashJumpTrig = Animator.StringToHash("JumpTrig");
 
-    // ───────────────────────────── Unity Flow ────────────────────────────
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _anim = GetComponent<Animator>();
-
         _rb.freezeRotation = true;
     }
 
     void Update()
     {
-        // 🟡 DETENER a Mario cuando el tiempo se acabe
-        if (Timer.IsTimeUp)
+        // ⛔ Block movement while start lock OR when time is up
+        if (Timer.IsTimeUp || !GameStart.CanPlayersMove)
         {
             _moveInput = 0f;
             _jumpQueued = false;
 
-            // mantener animación Idle
             _anim.SetFloat(HashSpeed, 0f);
             _anim.SetBool(HashGrounded, _isGrounded);
+            _anim.SetFloat(HashYVel, _rb.linearVelocity.y);
             return;
         }
 
-        // ───────── lógica original intacta ─────────
+        // Face movement direction
         if (_sprite && Mathf.Abs(_moveInput) > 0.01f)
             _sprite.flipX = _moveInput < 0f;
 
+        // Jump
         if (_jumpQueued && _isGrounded)
         {
             _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0f);
@@ -91,37 +77,44 @@ public class PlayerController2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 🟡 SI SE ACABÓ EL TIEMPO → bloquear movimiento horizontal
-        if (Timer.IsTimeUp)
+        // ⛔ Do not move horizontally while start lock or time is up
+        if (Timer.IsTimeUp || !GameStart.CanPlayersMove)
         {
             _rb.linearVelocity = new Vector2(0f, _rb.linearVelocity.y);
-            return;
         }
+        else
+        {
+            _rb.linearVelocity = new Vector2(_moveInput * moveSpeed, _rb.linearVelocity.y);
 
-        // ───────── lógica original intacta ─────────
-        _rb.linearVelocity = new Vector2(_moveInput * moveSpeed, _rb.linearVelocity.y);
-
-        if (Mathf.Abs(_moveInput) < 0.01f)
-            _rb.linearVelocity = new Vector2(0f, _rb.linearVelocity.y);
+            if (Mathf.Abs(_moveInput) < 0.01f)
+                _rb.linearVelocity = new Vector2(0f, _rb.linearVelocity.y);
+        }
 
         if (groundCheck)
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) != null;
     }
 
-    // ───────────────────────────── Input System ──────────────────────────
     public void OnMove(InputValue value)
     {
-        if (Timer.IsTimeUp) return; // bloquear input
+        if (Timer.IsTimeUp || !GameStart.CanPlayersMove) return;
         _moveInput = Mathf.Clamp(value.Get<float>(), -1f, 1f);
     }
 
     public void OnJump(InputValue value)
     {
-        if (Timer.IsTimeUp) return; // bloquear salto
-        if (value.isPressed) _jumpQueued = true;
+        // block jump if time is up or start is locked
+        if (Timer.IsTimeUp || !GameStart.CanPlayersMove) return;
+
+        // only allow jump if:
+        // 1) button is pressed
+        // 2) Mario is grounded
+        // 3) he is not going up already (avoid double jump feeling)
+        if (value.isPressed && _isGrounded && _rb.linearVelocity.y <= 0.01f)
+        {
+            _jumpQueued = true;
+        }
     }
 
-    // ───────────────────────────── Utilities ─────────────────────────────
     void OnDisable()
     {
         _moveInput = 0f;

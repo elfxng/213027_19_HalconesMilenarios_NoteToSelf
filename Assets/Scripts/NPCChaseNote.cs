@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NPCChaseNote : MonoBehaviour
 {
@@ -15,11 +15,11 @@ public class NPCChaseNote : MonoBehaviour
     public LayerMask groundLayer;
     public float groundCheckRadius = 0.2f;
 
-    Rigidbody2D rb;
-    Animator animator;
-    SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
-    float lastJumpTime = -999f;
+    private float lastJumpTime = -999f;
 
     void Start()
     {
@@ -32,21 +32,18 @@ public class NPCChaseNote : MonoBehaviour
     {
         bool grounded = IsGrounded();
 
-        // STOP MOVEMENT ONLY WHEN TIME IS OVER
-        if (Timer.IsTimeUp)
+        // 1) If time is up OR start is locked -> do not move, just fall
+        if (Timer.IsTimeUp || !GameStart.CanPlayersMove)
         {
-            // no horizontal movement, let gravity work
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-
             float endSpeed = Mathf.Abs(rb.linearVelocity.x);
             UpdateAnimations(endSpeed, grounded);
             return;
         }
 
-        // ---------- NORMAL AI WHILE THERE IS TIME ----------
         GameObject note = FindClosestNote();
 
-        // No notes = idle
+        // 2) No notes -> idle
         if (note == null)
         {
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
@@ -57,23 +54,26 @@ public class NPCChaseNote : MonoBehaviour
         Vector2 pos = transform.position;
         Vector2 npos = note.transform.position;
 
-        // Horizontal movement
+        // 3) Move horizontally toward the note
         float direction = Mathf.Sign(npos.x - pos.x);
         rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
 
         // Flip sprite
         if (direction != 0 && spriteRenderer != null)
+        {
             spriteRenderer.flipX = (direction < 0);
+        }
 
-        // Jump logic
+        // 4) Decide if the NPC should jump
         float horizontalDist = Mathf.Abs(npos.x - pos.x);
         float verticalDist = npos.y - pos.y;
 
+        bool groundedNow = grounded;
         bool canJumpByTime = Time.time - lastJumpTime > jumpCooldown;
         bool noteAbove = verticalDist > 0.4f;
         bool closeEnoughX = horizontalDist < maxHorizontalJumpDist;
 
-        bool shouldJump = grounded && canJumpByTime && noteAbove && closeEnoughX;
+        bool shouldJump = groundedNow && canJumpByTime && noteAbove && closeEnoughX;
 
         if (shouldJump)
         {
@@ -81,8 +81,9 @@ public class NPCChaseNote : MonoBehaviour
             lastJumpTime = Time.time;
         }
 
+        // 5) Update animations
         float horizSpeed = Mathf.Abs(rb.linearVelocity.x);
-        UpdateAnimations(horizSpeed, grounded);
+        UpdateAnimations(horizSpeed, groundedNow);
     }
 
     void UpdateAnimations(float horizontalSpeed, bool grounded)
@@ -117,6 +118,7 @@ public class NPCChaseNote : MonoBehaviour
 
     bool IsGrounded()
     {
+        // groundLayer MUST be only the floor/platforms
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 }

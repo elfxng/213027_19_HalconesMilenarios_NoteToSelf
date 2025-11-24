@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class Stompable : MonoBehaviour
 {
-    [Header("Efecto de pisotón")]
-    public float stunDuration = 3f;    // tiempo aturdido
-    public float shrinkScale = 0.5f;   // tamaño mientras está pisado
-    public float blinkSpeed = 0.15f;   // velocidad del parpadeo
+    [Header("Stomp effect")]
+    public float stunDuration = 3f;     // time stunned
+    public float shrinkScale = 0.5f;    // how small the character becomes
+    public float blinkSpeed = 0.15f;    // blink frequency
+    public float popUpOffsetY = 0.2f;   // how much to move up when returning to normal size
 
-    [Tooltip("Scripts de movimiento/salto que se desactivan mientras está aturdido")]
+    [Tooltip("Movement scripts that should be disabled while stunned")]
     public MonoBehaviour[] movementScripts;
 
     private Vector3 originalScale;
@@ -31,43 +32,52 @@ public class Stompable : MonoBehaviour
     {
         stunned = true;
 
-        // Hacerse pequeño
+        // Make character smaller
         transform.localScale = originalScale * shrinkScale;
 
-        // Desactivar scripts de movimiento
+        // Disable movement scripts
         foreach (var s in movementScripts)
+        {
             if (s != null) s.enabled = false;
+        }
 
-        // Iniciar parpadeo
+        // Start blinking
         StartCoroutine(BlinkRoutine());
 
-        // Esperar el tiempo de stun
+        // Wait while stunned
         yield return new WaitForSeconds(stunDuration);
 
-        // Volver a tamaño normal
+        // Restore normal size
         transform.localScale = originalScale;
 
-        // Reactivar scripts de movimiento
+        // Move character slightly up to avoid being inside the ground
+        transform.position = new Vector3(
+            transform.position.x,
+            transform.position.y + popUpOffsetY,
+            transform.position.z
+        );
+
+        // Re-enable movement scripts
         foreach (var s in movementScripts)
+        {
             if (s != null) s.enabled = true;
+        }
 
         stunned = false;
     }
 
     private IEnumerator BlinkRoutine()
     {
-        float time = 0f;
+        if (spriteRenderer == null)
+            yield break;
 
         while (stunned)
         {
-            // Alternar visibilidad
             spriteRenderer.enabled = !spriteRenderer.enabled;
-
             yield return new WaitForSeconds(blinkSpeed);
-            time += blinkSpeed;
         }
 
-        // Asegurarse de dejar visible cuando termine
+        // Make sure it ends visible
         spriteRenderer.enabled = true;
     }
 }
