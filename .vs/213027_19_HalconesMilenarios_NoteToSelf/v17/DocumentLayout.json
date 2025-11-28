@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\notehit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\notehit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\playerscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\gamestart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamestart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|c:\\users\\jsala\\documents\\github\\213027_19_halconesmilenarios_notetoself\\assets\\scripts\\finishmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B9A88D4-81B0-A5E1-FE63-A094383D4877}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\finishmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NoteHit.cs",
-              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteHit.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\NoteHit.cs",
-              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\NoteHit.cs",
-              "RelativeToolTip": "Assets\\Scripts\\NoteHit.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA1wBsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "GameStart.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\GameStart.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameStart.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\GameStart.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameStart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T01:45:30.814Z",
+              "WhenOpened": "2025-11-28T05:29:17.298Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerScore.cs",
-              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\PlayerScore.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScore.cs",
-              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\PlayerScore.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlayerScore.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "FinishManager.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\FinishManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\FinishManager.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\FinishManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\FinishManager.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA1wCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T01:25:35.186Z",
+              "WhenOpened": "2025-11-28T05:12:01.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Timer.cs",
+              "DocumentMoniker": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Timer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Timer.cs",
+              "ToolTip": "C:\\Users\\jsala\\Documents\\GitHub\\213027_19_HalconesMilenarios_NoteToSelf\\Assets\\Scripts\\Timer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Timer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T04:29:45.117Z",
               "EditorCaption": ""
             }
           ]
