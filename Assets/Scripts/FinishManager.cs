@@ -1,37 +1,39 @@
 using UnityEngine;
+using System.Collections;
 
 public class FinishManager : MonoBehaviour
 {
     [Header("Finish UI")]
-    public GameObject finishObject;    // el objeto FINISH del Canvas
+    public GameObject finishPanel;   // panel/imagen FINISH en el Canvas
+    public float displayTime = 1.5f; // cuántos segundos se ve FINISH
 
-    private bool shown = false;
+    private bool started = false;
 
     void Start()
     {
-        // asegurarnos de que empieza apagado
-        if (finishObject != null)
-            finishObject.SetActive(false);
+        // asegurarnos que inicia apagado
+        if (finishPanel != null)
+            finishPanel.SetActive(false);
     }
 
     void Update()
     {
-        if (shown) return;
-
-        // esperamos a que el Timer diga que se acabó
-        if (Timer.IsTimeUp)
+        // cuando se acabe el tiempo y aún no hemos mostrado FINISH
+        if (!started && Timer.IsTimeUp)
         {
-            shown = true;
-            ShowFinish();
+            started = true;
+            StartCoroutine(ShowFinishRoutine());
         }
     }
 
-    void ShowFinish()
+    IEnumerator ShowFinishRoutine()
     {
-        if (finishObject != null)
-        {
-            finishObject.SetActive(true);
-            Debug.Log("FINISH mostrado");
-        }
+        if (finishPanel != null)
+            finishPanel.SetActive(true);     // mostrar FINISH
+
+        yield return new WaitForSeconds(displayTime);
+
+        if (finishPanel != null)
+            finishPanel.SetActive(false);    // ocultar FINISH
     }
 }

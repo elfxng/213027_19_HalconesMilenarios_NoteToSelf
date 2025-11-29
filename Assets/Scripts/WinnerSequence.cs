@@ -6,24 +6,24 @@ public class WinnerSequence : MonoBehaviour
     [System.Serializable]
     public class PlayerEntry
     {
-        public string playerName;      // solo para verlo en el inspector
-        public Transform character;    // objeto del jugador en la escena
-        public ScoreManager score;     // script de puntaje de ese jugador
+        public string playerName;      // solo para identificarlo
+        public Transform character;    // objeto del jugador en escena
+        public ScoreManager score;     // script de puntos de ese jugador
         public GameObject winsObject;  // hijo con el sprite "Wins"
     }
 
     public PlayerEntry[] players;
 
     [Header("Timing")]
-    public float delayAfterFinish = 1.5f;   // esperar después de que aparezca FINISH
-    public float cameraMoveDuration = 2f;   // tiempo que tarda la cámara en acercarse
+    public float delayAfterFinish = 1.5f;   // esperar después de que termine el tiempo
+    public float cameraMoveDuration = 2f;   // tiempo del movimiento/zoom de cámara
 
     [Header("Camera")]
     public Vector3 cameraOffset = new Vector3(0f, 1.5f, 0f);
     public Camera targetCamera;
 
-    [Header("Finish Panel")]
-    public GameObject finishPanel;          // objeto FINISH del Canvas
+    [Header("Camera Zoom")]
+    public float finalZoom = 3.5f;          // más pequeño = más zoom
 
     private bool sequenceStarted = false;
 
@@ -35,11 +35,8 @@ public class WinnerSequence : MonoBehaviour
 
     void Update()
     {
-        // si ya empezó, no repetimos
-        if (sequenceStarted) return;
-
-        // cuando el tiempo llega a 0
-        if (Timer.IsTimeUp)
+        // solo arrancar una vez cuando el tiempo se acabe
+        if (!sequenceStarted && Timer.IsTimeUp)
         {
             sequenceStarted = true;
             StartCoroutine(WinnerRoutine());
@@ -48,14 +45,10 @@ public class WinnerSequence : MonoBehaviour
 
     IEnumerator WinnerRoutine()
     {
-        // 1) dejamos que FINISH se vea un momento
+        // 1) esperar un momento (en este tiempo ya se mostró FINISH)
         yield return new WaitForSeconds(delayAfterFinish);
 
-        // 🔥 ahora sí ocultamos FINISH
-        if (finishPanel != null)
-            finishPanel.SetActive(false);
-
-        // 2) buscamos el jugador con más puntos
+        // 2) buscar el jugador con más puntos
         PlayerEntry winner = null;
         int bestScore = int.MinValue;
 
@@ -63,7 +56,7 @@ public class WinnerSequence : MonoBehaviour
         {
             if (p == null || p.score == null) continue;
 
-            int s = p.score.Score;   // usamos la propiedad pública del ScoreManager
+            int s = p.score.Score;   // propiedad pública del ScoreManager
 
             if (winner == null || s > bestScore)
             {
@@ -75,21 +68,30 @@ public class WinnerSequence : MonoBehaviour
         if (winner == null || targetCamera == null)
             yield break;
 
-        // 3) movemos la cámara hacia el ganador
+        // 3) preparar movimiento + zoom de cámara
         Vector3 startPos = targetCamera.transform.position;
         Vector3 targetPos = winner.character.position + cameraOffset;
         targetPos.z = startPos.z; // mantener la misma Z
 
+        float startOrthoSize = targetCamera.orthographicSize;
         float t = 0f;
+
+        // 4) mover cámara y hacer zoom
         while (t < cameraMoveDuration)
         {
             t += Time.deltaTime;
             float f = Mathf.Clamp01(t / cameraMoveDuration);
+
+            // mover posición
             targetCamera.transform.position = Vector3.Lerp(startPos, targetPos, f);
+
+            // zoom (para cámara ortográfica 2D)
+            targetCamera.orthographicSize = Mathf.Lerp(startOrthoSize, finalZoom, f);
+
             yield return null;
         }
 
-        // 4) activamos el "WINS" del ganador
+        // 5) activar el cartel WINS del ganador
         if (winner.winsObject != null)
             winner.winsObject.SetActive(true);
     }
