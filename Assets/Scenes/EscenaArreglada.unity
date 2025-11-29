@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c74d1cb99ca5a4f9672c73ec314518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  scoretext: {fileID: 0}
+  scoretext: {fileID: 288332883}
 --- !u!82 &294764997
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c74d1cb99ca5a4f9672c73ec314518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  scoretext: {fileID: 0}
+  scoretext: {fileID: 1920686239}
 --- !u!82 &914112311
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5174,7 +5174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c74d1cb99ca5a4f9672c73ec314518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  scoretext: {fileID: 0}
+  scoretext: {fileID: 1434199148}
 --- !u!82 &2021855566
 AudioSource:
   m_ObjectHideFlags: 0
