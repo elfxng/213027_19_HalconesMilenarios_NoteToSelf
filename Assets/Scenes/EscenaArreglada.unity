@@ -1818,7 +1818,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -4492,6 +4492,7 @@ MonoBehaviour:
   cameraMoveDuration: 2
   cameraOffset: {x: 0, y: 1.5, z: 0}
   targetCamera: {fileID: 519420031}
+
   finalZoom: 3.5
   restartButton: {fileID: 1085519516}
 --- !u!4 &1451711932
@@ -4863,7 +4864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9b8f3fd6e979b4cb8787e19a0618a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishManager
+
   finishPanel: {fileID: 0}
+
   displayTime: 1.5
 --- !u!4 &1778573166
 Transform:
