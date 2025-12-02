@@ -9,6 +9,10 @@ public class Timer : MonoBehaviour
 
     public static bool IsTimeUp = false;
 
+    [Header("UI End")]
+    public GameObject restartButton;      // botón de reinicio
+    public CountdownUI countdownUI;       // referencia al script que muestra FINISH
+
     private float elapsedTime = 0f;    // cuánto tiempo de juego ha pasado
     private bool finished = false;
 
@@ -17,6 +21,9 @@ public class Timer : MonoBehaviour
         IsTimeUp = false;
         elapsedTime = 0f;
         finished = false;
+
+        if (restartButton != null)
+            restartButton.SetActive(false);   // ocultar al inicio
     }
 
     void Update()
@@ -45,6 +52,14 @@ public class Timer : MonoBehaviour
             finished = true;
             IsTimeUp = true;
             Debug.Log("Timer terminó, 30 segundos de juego completados");
+
+            // 🔥 Mostrar el sprite "FINISH!"
+            if (countdownUI != null)
+                countdownUI.ShowFinish();
+
+            // 🔥 Activar botón de reinicio
+            if (restartButton != null)
+                restartButton.SetActive(true);
         }
     }
 }
