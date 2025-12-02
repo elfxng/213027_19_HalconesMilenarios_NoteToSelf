@@ -1,45 +1,50 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public static Timer Instance { get; private set; }   
-    public static bool IsTimeUp => Instance != null && Instance.timeLeft <= 0f;
+    [Header("Game Time")]
+    public float gameDuration = 30f;   // segundos reales de juego
+    public TMP_Text timerText;         // texto que muestra el tiempo
 
-    [Header("Tiempo")]
-    public float timeLeft = 30f;      // stopwatch duration
+    public static bool IsTimeUp = false;
 
-    [Header("Texto UI")]
-    public TMP_Text timerText;        
-
-    private bool running = true;
+    private float elapsedTime = 0f;    // cuánto tiempo de juego ha pasado
+    private bool finished = false;
 
     void Awake()
     {
-        
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
+        IsTimeUp = false;
+        elapsedTime = 0f;
+        finished = false;
     }
 
     void Update()
     {
-        if (!running) return;
+        // si ya terminó, no hacemos nada
+        if (finished) return;
 
-        timeLeft -= Time.deltaTime;
-
-        if (timeLeft <= 0f)
+        // mientras el juego NO haya empezado, el tiempo NO avanza
+        if (!GameStart.CanPlayersMove)
         {
-            timeLeft = 0f;
-            running = false;
+            if (timerText != null)
+                timerText.text = Mathf.Ceil(gameDuration).ToString();
+            return;
         }
 
+        // A partir de aquí el juego YA empezó
+        elapsedTime += Time.deltaTime;
+
+        float remaining = Mathf.Max(0f, gameDuration - elapsedTime);
+
         if (timerText != null)
-            timerText.text = Mathf.Ceil(timeLeft).ToString();
+            timerText.text = Mathf.Ceil(remaining).ToString();
+
+        if (remaining <= 0f)
+        {
+            finished = true;
+            IsTimeUp = true;
+            Debug.Log("Timer terminó, 30 segundos de juego completados");
+        }
     }
 }
