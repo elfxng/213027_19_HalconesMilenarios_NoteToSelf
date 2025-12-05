@@ -5,10 +5,10 @@ public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoretext;
 
-    // Puntaje real
+    // actual score
     private int scoreValue = 0;
 
-    // 🔥 Propiedad pública para que WinnerSequence pueda leer el puntaje
+    // Public property so that WinnerS sequence can read the score
     public int Score => scoreValue;
 
     public void AddPoint()

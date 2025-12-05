@@ -4,16 +4,16 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [Header("Game Time")]
-    public float gameDuration = 30f;   // segundos reales de juego
-    public TMP_Text timerText;         // texto que muestra el tiempo
+    public float gameDuration = 30f;   // actual seconds of gameplay
+    public TMP_Text timerText;         // Text that displays the time
 
     public static bool IsTimeUp = false;
 
     [Header("UI End")]
-    public GameObject restartButton;      // botón de reinicio
-    public CountdownUI countdownUI;       // referencia al script que muestra FINISH
+    public GameObject restartButton;      // reset button
+    public CountdownUI countdownUI;       // reference to the script that displays FINISH
 
-    private float elapsedTime = 0f;    // cuánto tiempo de juego ha pasado
+    private float elapsedTime = 0f;    
     private bool finished = false;
 
     void Awake()
@@ -23,15 +23,15 @@ public class Timer : MonoBehaviour
         finished = false;
 
         if (restartButton != null)
-            restartButton.SetActive(false);   // ocultar al inicio
+            restartButton.SetActive(false);   
     }
 
     void Update()
     {
-        // si ya terminó, no hacemos nada
+        
         if (finished) return;
 
-        // mientras el juego NO haya empezado, el tiempo NO avanza
+        // While the game has NOT started, time DOES NOT advance
         if (!GameStart.CanPlayersMove)
         {
             if (timerText != null)
@@ -39,7 +39,7 @@ public class Timer : MonoBehaviour
             return;
         }
 
-        // A partir de aquí el juego YA empezó
+        // From here the game has already begun
         elapsedTime += Time.deltaTime;
 
         float remaining = Mathf.Max(0f, gameDuration - elapsedTime);
@@ -53,11 +53,11 @@ public class Timer : MonoBehaviour
             IsTimeUp = true;
             Debug.Log("Timer terminó, 30 segundos de juego completados");
 
-            // 🔥 Mostrar el sprite "FINISH!"
+            
             if (countdownUI != null)
                 countdownUI.ShowFinish();
 
-            // 🔥 Activar botón de reinicio
+            
             if (restartButton != null)
                 restartButton.SetActive(true);
         }

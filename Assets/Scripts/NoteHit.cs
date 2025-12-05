@@ -8,17 +8,17 @@ public class NoteHit : MonoBehaviour
     {
         if (collision.CompareTag("PlayerHead"))
         {
-            // 🔹 1. Tu sistema actual de puntos (NO SE TOCA)
+            // Your current points system
             ScoreManager sm = collision.GetComponentInParent<ScoreManager>();
             if (sm != null)
                 sm.AddPoint();
 
-            // 🔹 2. NUEVO: sumar puntos al jugador que tocó la nota
+            //  Add points to the player who hit the note
             PlayerScore ps = collision.GetComponentInParent<PlayerScore>();
             if (ps != null)
                 ps.AddPoint(1);
 
-            // 🔹 3. Tu sistema de sonido (NO SE TOCA)
+            // Your sound system 
             AudioSource audio = collision.GetComponentInParent<AudioSource>();
             if (audio != null && hitSound != null)
                 audio.PlayOneShot(hitSound);

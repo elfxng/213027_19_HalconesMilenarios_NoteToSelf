@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class StompDetector : MonoBehaviour
 {
-    public float bounceForce = 8f;   // rebote hacia arriba después de pisar
+    public float bounceForce = 8f;   // rebound upwards after stepping
 
     private Rigidbody2D rb;
 
@@ -14,20 +14,20 @@ public class StompDetector : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // ¿El otro tiene Stompable?
+        
         Stompable stompable = collision.collider.GetComponentInParent<Stompable>();
         if (stompable == null) return;
 
-        // Revisar si el golpe fue desde ARRIBA
+        // Check if the impact came from ABOVE
         foreach (var contact in collision.contacts)
         {
-            // normal.y > 0.5f => ESTE objeto está encima del otro
+            
             if (contact.normal.y > 0.5f)
             {
-                // Aplicar efecto al que está debajo
+                // Apply effect to the one below
                 stompable.Stomp();
 
-                // Rebote hacia arriba
+                // Bounce upwards
                 if (rb != null)
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, bounceForce);

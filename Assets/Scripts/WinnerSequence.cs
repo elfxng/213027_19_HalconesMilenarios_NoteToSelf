@@ -26,7 +26,7 @@ public class WinnerSequence : MonoBehaviour
     public float finalZoom = 3.5f;
 
     [Header("UI")]
-    public GameObject restartButton;   // 🔥 EL NUEVO BOTÓN
+    public GameObject restartButton;   
 
     private bool sequenceStarted = false;
 
@@ -47,10 +47,10 @@ public class WinnerSequence : MonoBehaviour
 
     IEnumerator WinnerRoutine()
     {
-        // 1) esperar un momento
+        
         yield return new WaitForSeconds(delayAfterFinish);
 
-        // 2) buscar el ganador
+        
         PlayerEntry winner = null;
         int bestScore = int.MinValue;
 
@@ -70,7 +70,7 @@ public class WinnerSequence : MonoBehaviour
         if (winner == null || targetCamera == null)
             yield break;
 
-        // 3) preparar movimiento y zoom
+        
         Vector3 startPos = targetCamera.transform.position;
         Vector3 targetPos = winner.character.position + cameraOffset;
         targetPos.z = startPos.z;
@@ -78,7 +78,7 @@ public class WinnerSequence : MonoBehaviour
         float startOrthoSize = targetCamera.orthographicSize;
         float t = 0f;
 
-        // 4) movimiento + zoom
+        
         while (t < cameraMoveDuration)
         {
             t += Time.deltaTime;
@@ -90,11 +90,11 @@ public class WinnerSequence : MonoBehaviour
             yield return null;
         }
 
-        // 5) activar el WINS del ganador
+        
         if (winner.winsObject != null)
             winner.winsObject.SetActive(true);
 
-        // 6) 🔥 AHORA SÍ: activar el botón restart
+        
         if (restartButton != null)
             restartButton.SetActive(true);
     }

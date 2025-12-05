@@ -4,21 +4,21 @@ using System.Collections;
 public class FinishManager : MonoBehaviour
 {
     [Header("Finish UI")]
-    public GameObject finishPanel;   // panel/imagen FINISH en el Canvas
-    public float displayTime = 1.5f; // cuántos segundos se ve FINISH
+    public GameObject finishPanel;   // FINISH panel/image on the Canvas
+    public float displayTime = 1.5f; // seconds for FINISH to disappear
 
     private bool started = false;
 
     void Start()
     {
-        // asegurarnos que inicia apagado
+        // make sure that it is turned off at startup
         if (finishPanel != null)
             finishPanel.SetActive(false);
     }
 
     void Update()
     {
-        // cuando se acabe el tiempo y aún no hemos mostrado FINISH
+        // when time runs out and we haven't shown FINISH yet
         if (!started && Timer.IsTimeUp)
         {
             started = true;
@@ -29,11 +29,11 @@ public class FinishManager : MonoBehaviour
     IEnumerator ShowFinishRoutine()
     {
         if (finishPanel != null)
-            finishPanel.SetActive(true);     // mostrar FINISH
+            finishPanel.SetActive(true);     // show FINISH
 
         yield return new WaitForSeconds(displayTime);
 
         if (finishPanel != null)
-            finishPanel.SetActive(false);    // ocultar FINISH
+            finishPanel.SetActive(false);    // hide FINISH
     }
 }

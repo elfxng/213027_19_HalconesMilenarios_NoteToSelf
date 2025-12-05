@@ -42,7 +42,7 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
-        // ⛔ Block movement while start lock OR when time is up
+        // Block movement while start lock OR when time is up
         if (Timer.IsTimeUp || !GameStart.CanPlayersMove)
         {
             _moveInput = 0f;
@@ -77,7 +77,7 @@ public class PlayerController2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ⛔ Do not move horizontally while start lock or time is up
+        // Do not move horizontally while start lock or time is up
         if (Timer.IsTimeUp || !GameStart.CanPlayersMove)
         {
             _rb.linearVelocity = new Vector2(0f, _rb.linearVelocity.y);
